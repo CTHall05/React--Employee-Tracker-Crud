@@ -15,9 +15,11 @@ class User {
 
     return client
       .query(
-        'INSERT INTRO users (first_name, last_name, age, years_of_employment, role) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+        'INSERT INTO users (first_name, last_name, age, years_of_employment, role) VALUES ($1, $2, $3, $4, $5) RETURNING *',
         [first_name, last_name, age, years_of_employment, role]
       )
       .then((result) => result.rows[0]);
   }
 }
+
+module.exports = User;
