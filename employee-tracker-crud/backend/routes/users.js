@@ -33,22 +33,25 @@ router.patch('/:id', (req, res) => {
   const userId = req.params.id;
   const { first_name, last_name, age, years_of_employment, role } = req.body;
 
-  User.updateUser(
-    userId,
-    { first_name, last_name, years_of_employment, role }
-      .then((updateUser) => {
-        res.json(updateUser);
-      })
-      .catch((err) => {
-        console.log('Error updating user', err);
-        res.status(500).json({ error: 'An error occurred' });
-      })
-  );
+  User.updateUser(userId, {
+    first_name,
+    last_name,
+    age,
+    years_of_employment,
+    role,
+  })
+    .then((updatedUser) => {
+      res.json(updatedUser);
+    })
+    .catch((err) => {
+      console.log('Error updating user', err);
+      res.status(500).json({ error: 'An error occurred' });
+    });
 });
 
 // DELETE /users/:id - Delete User
 router.delete('/:id', (req, res) => {
-  const userId = req.param.id;
+  const userId = req.params.id;
 
   User.deleteUser(userId)
     .then(() => {
