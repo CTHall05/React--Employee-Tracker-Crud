@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import EmployeeTable from './Componenets/EmployeeTable/EmployeeTable';
 
 function App() {
   const [employees, setEmployees] = useState([]);
@@ -41,6 +42,7 @@ function App() {
             </ul>
           );
         })}
+        <EmployeeTable />
       </div>
     </div>
   );
