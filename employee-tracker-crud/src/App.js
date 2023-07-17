@@ -12,6 +12,20 @@ function App() {
       .catch((error) => console.log('Error fetching employees:', error));
   });
 
+  const handlePatch = (employee) => {};
+  const handleDelete = (employeeId) => {
+    fetch(`http://localhost:3000/users/${employeeId}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        const updatedEmployee = employees.filter(
+          (employee) => employee.id !== employeeId
+        );
+        setEmployees(updatedEmployee);
+      })
+      .catch((error) => console.log('Error delete employee:'));
+  };
+
   // const [showForm, setShowForm] = useState(false);
   // const [employees, setEmployee] = useState([]);
 
@@ -42,7 +56,11 @@ function App() {
             </ul>
           );
         })}
-        <EmployeeTable />
+        <EmployeeTable
+          employees={employees}
+          onDelete={handleDelete}
+          onPatch={handlePatch}
+        />
       </div>
     </div>
   );
