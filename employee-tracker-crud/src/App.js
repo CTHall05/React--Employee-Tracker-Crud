@@ -107,17 +107,8 @@ function App() {
     <div className="App">
       <header className="App-header">Employee Tracker</header>
       <div>
-        {/* {employees.map((employee) => {
-          return (
-            <ul key={employee.id}>
-              <li>{employee.first_name}</li>
-              <li>{employee.last_name}</li>
-              <li>{employee.age}</li>
-              <li>{employee.years_of_employment}</li>
-            </ul>
-          );
-        })} */}
         <EmployeeTable
+          className="table"
           employees={employees}
           onDelete={handleDelete}
           onPatch={handlePatch}
