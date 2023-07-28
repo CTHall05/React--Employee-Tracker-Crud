@@ -13,7 +13,7 @@ function App() {
 
   const handleFormSubmit = (employeeData) => {
     // Send a POST request to the server to create the employee
-    fetch('http://localhost:3000/users', {
+    fetch('https://react-employee-tracker-crud-app.onrender.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -75,13 +75,16 @@ function App() {
     const updatedData = promptForUpdatedData(employee);
 
     // Send the PATCH request to update the employee on the server
-    fetch(`http://localhost:3000/users/${employee.id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedData),
-    })
+    fetch(
+      `https://react-employee-tracker-crud-app.onrender.com/users/${employee.id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+      }
+    )
       .then((response) => response.json())
       .then((updatedEmployee) => {
         const updatedEmployees = employees.map((emp) => {
@@ -97,9 +100,12 @@ function App() {
 
   // DELETE - handleDelete function to delete from database
   const handleDelete = (employeeId) => {
-    fetch(`http://localhost:3000/users/${employeeId}`, {
-      method: 'DELETE',
-    })
+    fetch(
+      `https://react-employee-tracker-crud-app.onrender.com/users/${employeeId}`,
+      {
+        method: 'DELETE',
+      }
+    )
       .then(() => {
         const updatedEmployee = employees.filter(
           (employee) => employee.id !== employeeId
