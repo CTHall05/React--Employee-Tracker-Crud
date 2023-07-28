@@ -23,6 +23,7 @@ function App() {
       .then((response) => response.json())
       .then((newEmployee) => {
         setEmployees([...employees, newEmployee]);
+        setShowForm(false);
       })
       .catch((error) => console.log('Error creating employee:', error));
   };
@@ -139,17 +140,14 @@ function App() {
           Create Employee
         </button>
       ) : (
-        <div>True</div>
+        <span></span>
       )}
       {showForm && (
         <div>
           <button className="employee_button" onClick={handleCreateEmployee}>
-            Cancel
+            Close
           </button>
-          <CreateEmployee
-            onCreate={handleFormSubmit}
-            closeForm={handleCreateEmployee}
-          ></CreateEmployee>
+          <CreateEmployee onCreate={handleFormSubmit}></CreateEmployee>
         </div>
       )}
       <div>

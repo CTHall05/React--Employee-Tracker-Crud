@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function CreateEmployee({ onCreate, closeForm }) {
+function CreateEmployee({ onCreate }) {
   const [employeeData, setEmployeeData] = useState({
     first_name: '',
     last_name: '',
@@ -82,7 +82,7 @@ function CreateEmployee({ onCreate, closeForm }) {
           required
         />
       </label>
-      <button className="button-design" type="submit" onClick={closeForm}>
+      <button className="button-design" type="submit">
         Submit
       </button>
     </form>
