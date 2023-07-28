@@ -28,7 +28,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch('https://react-employee-tracker-crud-app.onrender.com')
+    fetch('https://react-employee-tracker-crud-app.onrender.com/users')
       .then((response) => response.json())
       .then((data) => setEmployees(data))
       .catch((error) => console.log('Error fetching employees:', error));
