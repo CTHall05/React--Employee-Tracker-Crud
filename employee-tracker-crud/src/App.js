@@ -128,9 +128,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Employee Tracker</header>
-      <button className="employee_button" onClick={handleCreateEmployee}>
-        Create Employee
-      </button>
+      {!showForm ? (
+        <button className="employee_button" onClick={handleCreateEmployee}>
+          Create Employee
+        </button>
+      ) : (
+        <div></div>
+      )}
       {showForm && (
         <div>
           <button className="employee_button" onClick={handleCreateEmployee}>
