@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import EmployeeTable from './Componenets/EmployeeTable/EmployeeTable';
 import CreateEmployee from './Componenets/CreateEmployee/CreateEmployee';
+import teamImage from './team.png';
 
 function App() {
   const [employees, setEmployees] = useState([]);
@@ -134,7 +135,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Employee Tracker</header>
+      <header className="App-header">
+        Employee Tracker
+        <img className="applicationImage" src={teamImage} alt="Employee Team" />
+      </header>
       {!showForm ? (
         <button className="employee_button" onClick={handleCreateEmployee}>
           Create Employee
