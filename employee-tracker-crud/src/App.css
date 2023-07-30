@@ -23,12 +23,17 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
   background-color: var(--white);
   color: var(--primary_colour);
   font-size: 50px;
   width: 100vw;
   height: 10vh;
   font-weight: bolder;
+}
+
+.applicationImage {
+  width: 50px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
