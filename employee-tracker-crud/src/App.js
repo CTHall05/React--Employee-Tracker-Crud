@@ -7,6 +7,7 @@ import teamImage from './team.png';
 function App() {
   const [employees, setEmployees] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleCreateEmployee = () => {
     setShowForm(!showForm);
@@ -25,6 +26,7 @@ function App() {
       .then((newEmployee) => {
         setEmployees([...employees, newEmployee]);
         setShowForm(false);
+        setIsLoading(false);
       })
       .catch((error) => console.log('Error creating employee:', error));
   };
@@ -32,7 +34,10 @@ function App() {
   useEffect(() => {
     fetch('https://react-employee-tracker-crud-app.onrender.com/users')
       .then((response) => response.json())
-      .then((data) => setEmployees(data))
+      .then((data) => {
+        setEmployees(data);
+        setIsLoading(false);
+      })
       .catch((error) => console.log('Error fetching employees:', error));
   });
 
@@ -154,13 +159,17 @@ function App() {
           <CreateEmployee onCreate={handleFormSubmit}></CreateEmployee>
         </div>
       )}
-      <div>
-        <EmployeeTable
-          employees={employees}
-          onDelete={handleDelete}
-          onPatch={handlePatch}
-        />
-      </div>
+      {isLoading ? (
+        <h2 className="loading">Fetching Data!</h2>
+      ) : (
+        <div>
+          <EmployeeTable
+            employees={employees}
+            onDelete={handleDelete}
+            onPatch={handlePatch}
+          />
+        </div>
+      )}
     </div>
   );
 }
